@@ -13,11 +13,10 @@ public class RentPage {
     private WebDriverWait wait;
 
     //Поле "Когда привезти самокат"
-    private By deliveryDateInput =
-            By.xpath("//input[@placeholder='* Когда привезти самокат']");
+    private By deliveryDateInput = By.xpath("//input[@placeholder='* Когда привезти самокат']");
 
     //Поле "Срок аренды"
-    private By rentalPeriodInput = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/div/div[1]");
+    private By rentalPeriodInput = By.xpath("//div[contains(@class,'Dropdown-control')]");
 
     //Вариант срока аренды в выпадающем списке
     private By rentalPeriodOption(String period) {
@@ -32,18 +31,16 @@ public class RentPage {
     }
 
     //Поле "Комментарий для курьера"
-    private By commentInput = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[4]/input");
+    private By commentInput = By.xpath("//input[@placeholder='Комментарий для курьера']");
 
     //Кнопка "Заказать"
-    private By orderButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button[2]");
+    private By orderButton = By.xpath("//div[contains(@class,'Order_Buttons')]//button[text()='Заказать']");
 
     // Кнопка "Да" в окне подтверждения
-    private By confirmYesButton = By.xpath("/html/body/div/div/div[2]/div[5]/div[2]/button[2]");
+    private By confirmYesButton = By.xpath("//div[contains(@class,'Order_Buttons')]//button[contains(text(),'Да')]");
 
     // Окно успешного заказа
-    private By successMessage = By.xpath(
-            "//div[contains(@class,'Order_ModalHeader') and contains(text(),'Заказ оформлен')]"
-    );
+    private By successMessage = By.xpath("//div[contains(@class,'Order_ModalHeader') and contains(text(),'Заказ оформлен')]");
 
     public RentPage(WebDriver driver) {
         this.driver = driver;

@@ -9,11 +9,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageobjects.MainPage;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 
 @RunWith(Parameterized.class)
 public class MainPageTest {
 
     private WebDriver driver;
+
+    @Before
+    public void setUp() {
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+
+        driver = new ChromeDriver(options);
+    }
 
     private int index;
     private String expectedAnswer;
@@ -23,7 +33,7 @@ public class MainPageTest {
         this.expectedAnswer = expectedAnswer;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Вопрос №{0}: {1}")
     public static Object[][] getFaqData() {
         return new Object[][]{
                 {0, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
@@ -40,10 +50,6 @@ public class MainPageTest {
     @Test
     public void clickQuestionsTest() {
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
         mainPage.clickCookieButton();

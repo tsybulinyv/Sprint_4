@@ -13,28 +13,22 @@ public class OrderPage {
     private WebDriverWait wait;
 
     // Поле "Имя"
-    private By nameInput =
-            By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/input");
+    private By nameInput = By.xpath("//input[@placeholder='* Имя']");
 
     // Поле "Фамилия"
-    private By surnameInput =
-            By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/input");
+    private By surnameInput = By.xpath("//input[@placeholder='* Фамилия']");
 
     // Поле "Адрес"
-    private By addressInput =
-            By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[3]/input");
+    private By addressInput = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
 
     // Поле "Станция метро"
-    private By metroInput =
-            By.className("select-search__input");
+    private By metroInput = By.className("select-search__input");
 
     // Поле "Телефон"
-    private By phoneNumberInput =
-            By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[5]/input");
+    private By phoneNumberInput = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
 
     // Кнопка "Далее"
-    private By nextButton =
-            By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button");
+    private By nextButton = By.xpath("//div[contains(@class,'Order_NextButton')]//button[text()='Далее']");
 
     public OrderPage(WebDriver driver) {
 

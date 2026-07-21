@@ -11,11 +11,21 @@ import pageobjects.MainPage;
 import pageobjects.OrderPage;
 import pageobjects.RentPage;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
 
 @RunWith(Parameterized.class)
 public class OrderTest {
 
     private WebDriver driver;
+
+    @Before
+    public void setUp() {
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+
+        driver = new ChromeDriver(options);
+    }
 
     private final String name;
     private final String surname;
@@ -43,7 +53,7 @@ public class OrderTest {
         this.orderButton = orderButton;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{index}: {0} {1}, {3}, {9}")
     public static Object[][] getOrderData() {
         return new Object[][]{
                 {
@@ -99,10 +109,6 @@ public class OrderTest {
 
     @Test
     public void orderScooterTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
 
         MainPage mainPage = new MainPage(driver);
         OrderPage orderPage = new OrderPage(driver);
@@ -128,6 +134,6 @@ public class OrderTest {
 
     @After
     public void tearDown() {
-            driver.quit();
+        driver.quit();
     }
 }

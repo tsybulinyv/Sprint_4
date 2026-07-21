@@ -10,10 +10,10 @@ public class MainPage {
     private WebDriverWait wait;
 
     //Верхняя кнопка "Заказать"
-    private By topOrderButton = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]");
+    private By topOrderButton = By.xpath("//button[contains(@class,'Button_Button') and not(contains(@class,'Button_UltraBig'))]");
 
     //Нижняя кнопка "Заказать"
-    private By bottomOrderButton = By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button");
+    private By bottomOrderButton = By.xpath("//div[contains(@class,'Home_FinishButton')]//button[text()='Заказать']");
 
     //Кнопка принятия cookies
     private By cookieButton = By.id("rcc-confirm-button");
